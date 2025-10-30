@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Luis Alfredo Villera Pastrana</title>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 180px;
+            background: #2a5298;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 13px;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.03)"/></svg>');
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .emoji-pentagram {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .emoji-pentagram svg {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 60px;
+            top: 10px;
+        }
+        .emoji-notes {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 60px;
+            pointer-events: none;
+            top: 10px;
+        }
+        .emoji-note {
+            position: absolute;
+            font-size: 2em;
+            animation: moveEmoji 12s linear infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+        }
+        .emoji-note:nth-child(1) { top: 5px; animation-delay: 0s; }
+        .emoji-note:nth-child(2) { top: 20px; animation-delay: 2s; }
+        .emoji-note:nth-child(3) { top: 35px; animation-delay: 4s; }
+        .emoji-note:nth-child(4) { top: 15px; animation-delay: 6s; }
+        .emoji-note:nth-child(5) { top: 40px; animation-delay: 8s; }
+        .emoji-note:nth-child(6) { top: 30px; animation-delay: 10s; }
+        @keyframes moveEmoji {
+            0% { left: -60px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: calc(100% + 60px); opacity: 0; }
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .job-title-header {
+            font-size: 22px;
+            color: #a8d5ff;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        .tp-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-top: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+            font-size: 14px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .profile-section {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #2a5298;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #1e3c72;
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2a5298;
+            position: relative;
+            font-weight: 600;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        .experience-item {
+            margin-bottom: 30px;
+            padding-left: 25px;
+            border-left: 2px solid #e9ecef;
+            position: relative;
+        }
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: #2a5298;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white, 0 0 0 5px #2a5298;
+        }
+        .job-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        .company {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .date {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #495057;
+        }
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .skill-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        .education-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .education-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        .institution {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .languages {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .language-item {
+            flex: 1;
+            min-width: 200px;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+        }
+        .language-name {
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        .language-level {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .additional-info {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .additional-info ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .additional-info li {
+            padding: 10px 10px 10px 30px;
+            background: white;
+            border-radius: 5px;
+            position: relative;
+        }
+        .additional-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 10px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 25px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .content {
+                padding: 25px;
+            }
+            .skills-container {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="emoji-pentagram-bg"></div>
+    <script>
+    // Configuración
+    const NUM_FRANJAS = Math.ceil(window.innerHeight / 120) + 1;
+    const EMOJIS = ["🎨","🐘", "🟨", "🐍", "☕", "🟩", "🎯" ,"🗄️"];
+    const pentagramContainer = document.getElementById('emoji-pentagram-bg');
+    for (let i = 0; i < NUM_FRANJAS; i++) {
+        const top = i * 120;
+        const franja = document.createElement('div');
+        franja.className = 'emoji-pentagram';
+        franja.style.top = top + 'px';
+        franja.innerHTML = `
+            <svg viewBox="0 0 900 60" preserveAspectRatio="none">
+                <line x1="0" y1="10" x2="900" y2="10" stroke="" stroke-width="2" opacity="0.25"/>
+                <line x1="0" y1="22" x2="900" y2="22" stroke="" stroke-width="2" opacity="0.25"/>
+                <line x1="0" y1="34" x2="900" y2="34" stroke="" stroke-width="2" opacity="0.25"/>
+                <line x1="0" y1="46" x2="900" y2="46" stroke="" stroke-width="2" opacity="0.25"/>
+                <line x1="0" y1="58" x2="900" y2="58" stroke="" stroke-width="2" opacity="0.25"/>
+            </svg>
+            <div class="emoji-notes">
+                ${EMOJIS.map((emoji, idx) => `<span class="emoji-note" style="animation-duration: ${11 + (idx % 5) + Math.random()}s; top: ${5 + idx*7 + (Math.random()*20)}px; animation-delay: ${idx*2}s;">${emoji}</span>`).join('')}
+            </div>
+        `;
+        pentagramContainer.appendChild(franja);
+    }
+    </script>
+    <div class="container fade-in">
+        <div class="header fade-in" style="animation-delay:0.1s;">
+            <div class="header-content">
+                <h1>LUIS ALFREDO VILLERA PASTRANA</h1>
+                <div class="job-title-header">Ingeniero de Sistemas <span style="font-size:1.2em;">💻</span></div>
+                <div class="tp-badge">TP. 081122-0700938</div>
+                <div class="tp-badge">R2024000919</div>
+                <div class="contact-grid">
+                    <div class="contact-item tooltip">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                        luisvillera@sideso.com.co
+                        <span class="tooltiptext">¡Contáctame por correo!</span>
+                    </div>
+                    <div class="contact-item tooltip">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                        3004134484
+                        <span class="tooltiptext">¡Llama cuando gustes!</span>
+                    </div>
+                    <div class="contact-item tooltip">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                        Montería, Córdoba
+                        <span class="tooltiptext">Ubicación actual</span>
+                    </div>
+                    <div class="contact-item tooltip">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                        CC. 1.113.523.822
+                        <span class="tooltiptext">Documento de identidad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content fade-in" style="animation-delay:0.2s;">
+            <div class="profile-section fade-in" style="animation-delay:0.3s;">
+                <strong>PERFIL PROFESIONAL</strong><br>
+                Ingeniero de Sistemas con sólida experiencia en desarrollo de software full-stack. Poseo capacidad profesional y personal para trabajar en equipo y resolver desde el área del software los retos presentados por la compañía, con enfoque en soluciones innovadoras y eficientes.
+                <span class="tooltip" style="margin-left:8px;">
+                    <span style="font-size:1.2em;">✨</span>
+                    <span class="tooltiptext">¡Siempre aprendiendo y creciendo!</span>
+                </span>
+            </div>
+
+            <div class="section fade-in" style="animation-delay:0.4s;">
+                <h2>Experiencia Profesional</h2>
+                <div class="experience-item tooltip">
+                    <div class="job-title">Desarrollador de Software <span style="font-size:1.1em;">🧑‍💻</span></div>
+                    <div class="company">SIDESO S.A.S</div>
+                    <div class="date">2022 - Actualidad | 3+ años de experiencia</div>
+                    <ul>
+                        <li>Desarrollo y mantenimiento de aplicaciones web y móviles utilizando tecnologías modernas</li>
+                        <li>Implementación de soluciones tecnológicas full-stack para optimizar procesos empresariales</li>
+                        <li>Diseño y desarrollo de APIs RESTful con Laravel y PHP</li>
+                        <li>Creación de interfaces de usuario dinámicas con Vue.js y JavaScript</li>
+                        <li>Gestión de bases de datos SQL y optimización de consultas</li>
+                        <li>Trabajo colaborativo en equipo utilizando metodologías ágiles y Git para control de versiones</li>
+                    </ul>
+                    <span class="tooltiptext">¡Trabajo en equipo y tecnología de punta!</span>
+                </div>
+                <div class="experience-item tooltip">
+                    <div class="job-title">Desarrollador de Software <span style="font-size:1.1em;">💼</span></div>
+                    <div class="company">DIANAIS SAS, Facturación Electrónica</div>
+                    <div class="date">2020 - 2022 </div>
+                    <ul>
+                        <li>Desarrollo de sistemas de facturación electrónica cumpliendo normativas DIAN</li>
+                        <li>Implementación de soluciones de integración con sistemas contables y administrativos</li>
+                        <li>Desarrollo de módulos para generación y validación de documentos tributarios electrónicos</li>
+                        <li>Optimización de procesos de facturación y reportería</li>
+                    </ul>
+                    <span class="tooltiptext">Especialista en integración y normativas</span>
+                </div>
+            </div>
+
+            <div class="section fade-in" style="animation-delay:0.5s;">
+                <h2>Formación Académica</h2>
+                <div class="education-item tooltip">
+                    <div class="education-title">Ingeniería de Sistemas <span style="font-size:1.1em;">🎓</span></div>
+                    <div class="institution">Universidad de Córdoba</div>
+                    <div class="date">Montería, Colombia | Graduado en 2022</div>
+                    <span class="tooltiptext">Título universitario</span>
+                </div>
+                <div class="education-item tooltip">
+                    <div class="education-title">Diplomado en Desarrollo de Aplicaciones Móviles <span style="font-size:1.1em;">📱</span></div>
+                    <div class="institution">Universidad del Norte</div>
+                    <div class="date">2022</div>
+                    <span class="tooltiptext">Especialización en apps móviles</span>
+                </div>
+            </div>
+
+            <div class="section fade-in" style="animation-delay:0.6s;">
+                <h2>Competencias Técnicas</h2>
+                <div class="skills-container">
+                    <div class="skill-badge tooltip">🐘 PHP<span class="tooltiptext">Lenguaje backend robusto</span></div>
+                    <div class="skill-badge tooltip">🟨 JavaScript<span class="tooltiptext">Frontend y backend moderno</span></div>
+                    <div class="skill-badge tooltip">🗄️ SQL<span class="tooltiptext">Gestión de bases de datos</span></div>
+                    <div class="skill-badge tooltip">🐍 Python<span class="tooltiptext">Automatización y análisis</span></div>
+                    <div class="skill-badge tooltip">#️⃣ C#<span class="tooltiptext">Desarrollo multiplataforma</span></div>
+                    <div class="skill-badge tooltip">☕ Java<span class="tooltiptext">Aplicaciones empresariales</span></div>
+                    <div class="skill-badge tooltip">🟩 Vue.js<span class="tooltiptext">Framework frontend progresivo</span></div>
+                    <div class="skill-badge tooltip">🎯 Laravel<span class="tooltiptext">Framework PHP moderno</span></div>
+                    <div class="skill-badge tooltip">🌐 HTML5<span class="tooltiptext">Estructura web</span></div>
+                    <div class="skill-badge tooltip">🎨 CSS3<span class="tooltiptext">Estilos modernos</span></div>
+                    <div class="skill-badge tooltip">🔧 Git<span class="tooltiptext">Control de versiones</span></div>
+                    <div class="skill-badge tooltip">🔗 REST API<span class="tooltiptext">Interconexión de sistemas</span></div>
+                </div>
+            </div>
+
+            <div class="section fade-in" style="animation-delay:0.7s;">
+                <h2>Idiomas</h2>
+                <div class="languages">
+                    <div class="language-item tooltip">
+                        <div class="language-name">Español <span style="font-size:1.1em;">🇨🇴</span></div>
+                        <div class="language-level">Nativo</div>
+                        <span class="tooltiptext">Lengua materna</span>
+                    </div>
+                    <div class="language-item tooltip">
+                        <div class="language-name">Inglés <span style="font-size:1.1em;">🇬🇧</span></div>
+                        <div class="language-level">Básico</div>
+                        <span class="tooltiptext">Nivel básico</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section fade-in" style="animation-delay:0.8s;">
+                <h2>Competencias Adicionales</h2>
+                <div class="additional-info">
+                    <ul>
+                        <li class="tooltip">Capacidad para trabajar bajo presión y cumplir plazos establecidos<span class="tooltiptext">Gestión efectiva del tiempo</span></li>
+                        <li class="tooltip">Excelentes habilidades de comunicación y trabajo en equipo<span class="tooltiptext">Colaboración y liderazgo</span></li>
+                        <li class="tooltip">Orientado a la resolución de problemas con enfoque analítico<span class="tooltiptext">Pensamiento crítico</span></li>
+                        <li class="tooltip">Comprometido con el aprendizaje continuo y actualización tecnológica<span class="tooltiptext">Siempre actualizado</span></li>
+                        <li class="tooltip">Experiencia en metodologías ágiles de desarrollo<span class="tooltiptext">Scrum, Kanban, etc.</span></li>
+                        <li class="tooltip">Proactividad e iniciativa para proponer mejoras<span class="tooltiptext">Innovación constante</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
